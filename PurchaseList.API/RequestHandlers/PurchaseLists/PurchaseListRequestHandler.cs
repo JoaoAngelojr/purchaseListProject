@@ -43,13 +43,13 @@ namespace PurchaseList.API.RequestHandlers.PurchaseLists
             string email,
             int indexOfLastEmail)
         {
-            if (restOfDivision == 0 && request.Emails.IndexOf(email) == indexOfLastEmail)
+            if (restOfDivision > 0 && request.Emails.IndexOf(email) == indexOfLastEmail)
             {
                 result.BillsPayable.Add(email, (billValue + restOfDivision));
             }
             else
             {
-                result.BillsPayable.Add(email, (billValue + restOfDivision));
+                result.BillsPayable.Add(email, billValue);
             }
         }
     }

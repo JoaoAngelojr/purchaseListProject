@@ -5,9 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using PurchaseList.API.RequestHandlers.PurchaseLists;
 using PurchaseList.API.Validators.PurchaseLists;
 using System;
 using System.Reflection;
+using MediatR;
 
 namespace PurchaseList.API
 {
@@ -32,6 +34,8 @@ namespace PurchaseList.API
                 var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, xmlFile);
                 options.IncludeXmlComments(xmlPath);
             });
+
+            services.AddMediatR(typeof(PurchaseListRequestHandler));
 
             services.AddMvcCore()
                     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<PurchaseListRequestValidator>());
