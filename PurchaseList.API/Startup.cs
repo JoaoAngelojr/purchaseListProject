@@ -1,9 +1,11 @@
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using PurchaseList.API.Validators.PurchaseLists;
 using System;
 using System.Reflection;
 
@@ -30,6 +32,9 @@ namespace PurchaseList.API
                 var xmlPath = System.IO.Path.Combine(AppContext.BaseDirectory, xmlFile);
                 options.IncludeXmlComments(xmlPath);
             });
+
+            services.AddMvcCore()
+                    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<PurchaseListRequestValidator>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

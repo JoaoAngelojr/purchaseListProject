@@ -1,5 +1,4 @@
-﻿using Joyjet.Web.API.Controllers;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PurchaseList.API.Requests;
 using System.Threading.Tasks;
@@ -46,7 +45,7 @@ namespace PurchaseList.API.Controllers
         /// <response code="200">Bills successfully calculated.</response>
         /// <response code="400">Invalid request.</response>
         [HttpPost("[action]")]
-        public Task<IActionResult> CalculateBills([FromBody] CalculateBillsRequest request)
-                => SendCommand(request);
+        public async Task<IActionResult> CalculateBills([FromBody] CalculateBillsRequest request)
+                => await SendCommand(request);
     }
 }

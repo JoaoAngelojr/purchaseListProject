@@ -3,7 +3,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using PurchaseList.API.ViewModels;
 
-namespace Joyjet.Web.API.Controllers
+namespace PurchaseList.API.Controllers
 {
     public abstract class ApiBaseController : ControllerBase
     {
