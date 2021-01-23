@@ -20,14 +20,17 @@ namespace PurchaseList.API.Controllers
         /// {
         ///     "items": [
         ///         {
+        ///             "name": "coffee",
         ///             "quantity": 1,
         ///             "price": 5
         ///         },
         ///         {
+        ///             "name": "tea",
         ///             "quantity": 2,
         ///             "price": 3
         ///         },
         ///         {
+        ///             "name": "sugar",
         ///             "quantity": 5,
         ///             "price": 1
         ///         }

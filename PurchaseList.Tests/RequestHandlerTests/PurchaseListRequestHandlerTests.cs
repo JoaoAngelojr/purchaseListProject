@@ -22,6 +22,7 @@ namespace PurchaseList.Tests.RequestHandlerTests
             List<ItemViewModel> items = new List<ItemViewModel>();
             ItemViewModel item1 = new ItemViewModel()
             {
+                Name = "coffee",
                 Quantity = 1,
                 Price = 5
             };
@@ -29,6 +30,7 @@ namespace PurchaseList.Tests.RequestHandlerTests
 
             ItemViewModel item2 = new ItemViewModel()
             {
+                Name = "tea",
                 Quantity = 2,
                 Price = 3
             };

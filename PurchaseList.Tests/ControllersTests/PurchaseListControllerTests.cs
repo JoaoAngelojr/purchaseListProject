@@ -29,6 +29,7 @@ namespace PurchaseList.Tests.ControllersTests
             List<ItemViewModel> items = new List<ItemViewModel>();
             ItemViewModel item1 = new ItemViewModel()
             {
+                Name = "coffee",
                 Quantity = 1,
                 Price = 5
             };
@@ -36,6 +37,7 @@ namespace PurchaseList.Tests.ControllersTests
 
             ItemViewModel item2 = new ItemViewModel()
             {
+                Name = "sugar",
                 Quantity = 2,
                 Price = 3
             };

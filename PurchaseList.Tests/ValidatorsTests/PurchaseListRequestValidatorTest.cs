@@ -21,6 +21,7 @@ namespace PurchaseList.Tests.ValidatorsTests
             List<ItemViewModel> items = new List<ItemViewModel>();
             ItemViewModel item1 = new ItemViewModel()
             {
+                Name = "coffee",
                 Quantity = 1,
                 Price = 5
             };
@@ -28,6 +29,7 @@ namespace PurchaseList.Tests.ValidatorsTests
 
             ItemViewModel item2 = new ItemViewModel()
             {
+                Name = "tea",
                 Quantity = 2,
                 Price = 3
             };
@@ -90,12 +92,14 @@ namespace PurchaseList.Tests.ValidatorsTests
         [Theory]
         [InlineData(null)]
         [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("  ")]
         public void WhenEmailsListHasANullOrEmptyEmailThenShouldBeFail(string email)
         {
             _defaultRequest.Emails[0] = email;
             ValidationResult result = _validator.Validate(_defaultRequest);
             Assert.False(result.IsValid);
-            Assert.Equal("None of emails cannot be null or empty", result.ToString());
+            Assert.Equal("None of emails can be null or empty.", result.ToString());
         }
 
         [Theory]
@@ -118,6 +122,19 @@ namespace PurchaseList.Tests.ValidatorsTests
             ValidationResult result = _validator.Validate(_defaultRequest);
             Assert.False(result.IsValid);
             Assert.Equal("The item price cannot be a negative number.", result.ToString());
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData("  ")]
+        public void WhenItemsListHasAnItemWithItsNameNullOrEmptyThenShouldBeFail(string itemName)
+        {
+            _defaultRequest.Items[0].Name = itemName;
+            ValidationResult result = _validator.Validate(_defaultRequest);
+            Assert.False(result.IsValid);
+            Assert.Equal("None of items names can be null or empty.", result.ToString());
         }
     }
 }
