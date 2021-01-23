@@ -16,40 +16,32 @@ namespace PurchaseList.API.RequestHandlers.PurchaseLists
         {
             try
             {
+                ResultViewModel result = new ResultViewModel();
+
                 int total = request.Items.Select(x => x.Quantity * x.Price).Sum();
                 int emailsQuantity = request.Emails.Count;
                 int restOfDivision = total % emailsQuantity;
                 int billValue = total / emailsQuantity;
-                ResultViewModel result = new ResultViewModel();
+                int toReceiveExcedent = emailsQuantity - restOfDivision;
 
-                foreach ((string email, int indexOfLastEmail) in from string email in request.Emails
-                                                                 let indexOfLastEmail = emailsQuantity - 1
-                                                                 select (email, indexOfLastEmail))
-                    CreateBillsDictionary(request, restOfDivision, billValue, result, email, indexOfLastEmail);
+                foreach (string email in request.Emails)
+                {
+                    if (request.Emails.IndexOf(email) == toReceiveExcedent)
+                    {
+                        result.BillsPayable.Add(email, (billValue + 1));
+                        toReceiveExcedent += 1;
+                    }
+                    else
+                    {
+                        result.BillsPayable.Add(email, billValue);
+                    }
+                }
 
                 return await Task.FromResult(result);
             }
             catch (Exception ex)
             {
                 throw ex;
-            }
-        }
-
-        private static void CreateBillsDictionary(
-            CalculateBillsRequest request,
-            int restOfDivision,
-            int billValue,
-            ResultViewModel result,
-            string email,
-            int indexOfLastEmail)
-        {
-            if (restOfDivision > 0 && request.Emails.IndexOf(email) == indexOfLastEmail)
-            {
-                result.BillsPayable.Add(email, (billValue + restOfDivision));
-            }
-            else
-            {
-                result.BillsPayable.Add(email, billValue);
             }
         }
     }
