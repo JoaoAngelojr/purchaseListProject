@@ -6,9 +6,7 @@ using NSubstitute;
 using PurchaseList.API.Controllers;
 using PurchaseList.API.Requests;
 using PurchaseList.API.ViewModels;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
