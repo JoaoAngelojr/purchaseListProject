@@ -11,12 +11,10 @@ namespace PurchaseList.Tests.ValidatorsTests
     {
         private readonly PurchaseListRequestValidator _validator;
         private readonly CalculateBillsRequest _defaultRequest;
-        private readonly List<string> emptyStringList;
 
         public PurchaseListRequestValidatorTest()
         {
             _validator = new PurchaseListRequestValidator();
-            emptyStringList = new List<string>();
 
             List<ItemViewModel> items = new List<ItemViewModel>();
             ItemViewModel item1 = new ItemViewModel()
@@ -90,7 +88,6 @@ namespace PurchaseList.Tests.ValidatorsTests
         }
 
         [Theory]
-        [InlineData(null)]
         [InlineData("")]
         [InlineData(" ")]
         [InlineData("  ")]
@@ -100,6 +97,16 @@ namespace PurchaseList.Tests.ValidatorsTests
             ValidationResult result = _validator.Validate(_defaultRequest);
             Assert.False(result.IsValid);
             Assert.Equal("None of emails can be null or empty.", result.ToString());
+        }
+
+        [Fact]
+        public void WhenEmailsHaveTwoOrMoreEqualEmailsThenShouldBeFail()
+        {
+            _defaultRequest.Emails[0] = "email1@email.com";
+            _defaultRequest.Emails[1] = "email1@email.com";
+            ValidationResult result = _validator.Validate(_defaultRequest);
+            Assert.False(result.IsValid);
+            Assert.Equal("The list of emails cannot have equal emails.", result.ToString());
         }
 
         [Theory]
@@ -125,7 +132,6 @@ namespace PurchaseList.Tests.ValidatorsTests
         }
 
         [Theory]
-        [InlineData(null)]
         [InlineData("")]
         [InlineData(" ")]
         [InlineData("  ")]

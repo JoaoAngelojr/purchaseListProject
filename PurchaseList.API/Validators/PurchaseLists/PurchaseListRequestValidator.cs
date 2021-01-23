@@ -22,6 +22,11 @@ namespace PurchaseList.API.Validators.PurchaseLists
                 .When(request => request.Emails != null && !request.Emails.Any(x => string.IsNullOrEmpty(x)))
                 .WithMessage("None of emails can be null or empty.");
 
+            RuleFor(request => request.Emails)
+                .Must(emails => emails.GroupBy(x => x).Where(y => y.Count() > 1).Count() == 0)
+                .When(request => request.Emails != null && !request.Emails.Any(x => string.IsNullOrEmpty(x.Trim())))
+                .WithMessage("The list of emails cannot have equal emails.");
+
             RuleFor(request => request.Items)
                 .Must(items => items != null && items.Count > 0)
                 .WithMessage("You need to add at least one item.");
