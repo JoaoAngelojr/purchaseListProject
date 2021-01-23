@@ -44,6 +44,7 @@ namespace PurchaseList.API.Controllers
         /// <returns>A dictionary where the key is the user's email and the value is the bill.</returns>
         /// <response code="200">Bills successfully calculated.</response>
         /// <response code="400">Invalid request.</response>
+        /// <response code="500">Internal Server Error.</response>
         [HttpPost("[action]")]
         public async Task<IActionResult> CalculateBills([FromBody] CalculateBillsRequest request)
                 => await SendCommand(request);

@@ -31,7 +31,7 @@ namespace PurchaseList.API.RequestHandlers.PurchaseLists
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.InnerException.Message);
+                throw ex;
             }
         }
 

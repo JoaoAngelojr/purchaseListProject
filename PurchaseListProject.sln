@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PurchaseList.API", "PurchaseList.API\PurchaseList.API.csproj", "{2670C1D7-8568-4B3A-8D79-C30768E99973}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PurchaseList.API", "PurchaseList.API\PurchaseList.API.csproj", "{2670C1D7-8568-4B3A-8D79-C30768E99973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PurchaseList.Tests", "PurchaseList.Tests\PurchaseList.Tests.csproj", "{7FB0004A-61C7-4360-9839-663BE7BB250B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2670C1D7-8568-4B3A-8D79-C30768E99973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2670C1D7-8568-4B3A-8D79-C30768E99973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2670C1D7-8568-4B3A-8D79-C30768E99973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB0004A-61C7-4360-9839-663BE7BB250B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB0004A-61C7-4360-9839-663BE7BB250B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB0004A-61C7-4360-9839-663BE7BB250B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB0004A-61C7-4360-9839-663BE7BB250B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

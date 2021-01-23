@@ -18,7 +18,7 @@ namespace PurchaseList.API.Controllers
         {
             var result = await _mediator.Send(request).ConfigureAwait(false);
 
-            if (Response == null)
+            if (result == null)
                 return BadRequest();
 
             return Ok(result);
