@@ -1,6 +1,6 @@
 # Purchase Lists Project
 
-A Web API for calculate bills of Purchase Lists.
+A Web API for calculate bills of Purchase Lists. The description of the challenge is found [here](https://gist.github.com/programa-elixir/1bd50a6d97909f2daa5809c7bb5b9a8a).
 
 ## Getting Started
 
